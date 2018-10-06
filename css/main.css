@@ -1,0 +1,29 @@
+body {
+    padding: 20px;
+}
+
+.rtl {
+    direction: rtl;
+}
+
+#left-col {
+    float: left;
+    width: 45%;
+}
+
+#right-col {
+    float: right;
+    width: 45%;
+}
+
+.btn, .form-control {
+    border-radius: 0;
+}
+
+#connections {
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 1;
+    pointer-events: none;
+}

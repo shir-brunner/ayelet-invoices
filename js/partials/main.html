@@ -1,0 +1,255 @@
+<canvas id="connections" ng-show="showConnections"></canvas>
+<div class="row">
+    <div class="text-center col-sm-6">
+        <table class="table table-bordered table-striped rtl">
+            <thead>
+            <tr class="bg-secondary text-white">
+                <th colspan="{{showTimeline ? 3 : 4}}">חיובים בכרטיס אשראי</th>
+            </tr>
+            <tr>
+                <th>תאריך</th>
+                <th ng-hide="showTimeline">מספר שובר</th>
+                <th>סכום עסקה</th>
+                <th ng-hide="showTimeline">תשלומים</th>
+                <th ng-show="showTimeline">פירוט משוער לפי מחיר</th>
+            </tr>
+            </thead>
+            <tbody id="payments">
+            <tr ng-repeat="payment in payments" class="payment" ng-hide="searchTerm && showTimeline && !getTimelineDetails(payment)">
+                <td class="date">{{payment.date | date: 'dd/MM/y'}}</td>
+                <td ng-hide="showTimeline">{{payment.voucherNumber}}</td>
+                <td class="amount">{{payment.amount | currency: ''}}</td>
+                <td ng-hide="showTimeline">{{payment.payments}}</td>
+                <td ng-show="showTimeline">{{getTimelineDetails(payment)}}</td>
+            </tr>
+            </tbody>
+            <tfoot>
+            <tr>
+                <th></th>
+                <th ng-hide="showTimeline"></th>
+                <th>{{sumAmount(payments) | currency : ''}}</th>
+                <th ng-hide="showTimeline"></th>
+                <th ng-show="showTimeline"></th>
+            </tr>
+            </tfoot>
+        </table>
+    </div>
+
+    <div class="text-center col-sm-6" ng-show="showTimeline">
+        <table class="table table-bordered table-striped rtl">
+            <thead>
+            <tr class="bg-secondary text-white">
+                <th colspan="2">ניתוח נתונים</th>
+            </tr>
+            <tr>
+                <th><input class="form-control" ng-keyup="search()" ng-model="searchTerm" placeholder="חיפוש"/></th>
+                <th>
+                    <div class="btn btn-danger btn-block" ng-click="showTimeline = false">חזרה לעמוד הראשי</div>
+                </th>
+            </tr>
+            </thead>
+        </table>
+
+        <table class="table table-bordered table-striped rtl connectable">
+            <thead>
+            <tr class="bg-secondary text-white">
+                <th colspan="5">מחיר לפי פריט</th>
+            </tr>
+            <tr>
+                <th>פריט</th>
+                <th>מחיר יחידה</th>
+                <th>יחידות</th>
+                <th>סה"כ</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="item in items">
+                <td>{{item.desc}}</td>
+                <td>{{item.pricePerUnit * 1.17 | currency: ''}}</td>
+                <td>{{item.quantity}}</td>
+                <td>{{(item.pricePerUnit * item.quantity) * 1.17 | currency: ''}}</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="text-center col-sm-6" ng-hide="showTimeline">
+        <table class="table table-bordered table-striped rtl">
+            <thead>
+            <tr class="bg-secondary text-white">
+                <th colspan="4">ניתוח נתונים</th>
+            </tr>
+            <tr>
+                <th><input class="form-control" ng-keyup="search()" ng-model="searchTerm" placeholder="חיפוש"/></th>
+                <th>
+                    <div class="btn btn-success btn-block" ng-click="toggleConnections('amount')">קישור סכומים</div>
+                </th>
+                <th>
+                    <div class="btn btn-info btn-block" ng-click="toggleConnections('amountAndDate')">קישור סכומים
+                        ותאריך
+                    </div>
+                </th>
+                <th>
+                    <div class="btn btn-danger btn-block" ng-click="showTimeline = true">פירוט תשלומים</div>
+                </th>
+            </tr>
+            </thead>
+        </table>
+
+        <table class="table table-bordered table-striped rtl connectable">
+            <thead>
+            <tr class="bg-secondary text-white">
+                <th colspan="5">הזמנות</th>
+            </tr>
+            <tr>
+                <th>תאריך</th>
+                <th>מספר הזמנה</th>
+                <th>סה"כ לתשלום</th>
+                <th>מסמך</th>
+                <th>חתימה</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="order in orders">
+                <td class="date">{{order.date | date: 'dd/MM/y'}}</td>
+                <td>{{order.number}}</td>
+                <td class="amount">{{order.totalAmount | currency: ''}}</td>
+                <td><a target="_blank" href="../img/orders/{{order.image}}.jpg">הצג מסמך</a></td>
+                <td>{{order.signed ? 'כן' : 'לא'}}</td>
+            </tr>
+            </tbody>
+            <tfoot>
+            <tr>
+                <th></th>
+                <th></th>
+                <th>{{sumAmount(orders) | currency : ''}}</th>
+                <th></th>
+                <th></th>
+            </tr>
+            </tfoot>
+        </table>
+
+        <table class="table table-bordered table-striped connectable rtl">
+            <thead>
+            <tr class="bg-secondary text-white">
+                <th colspan="5">חשבונות עסקה</th>
+            </tr>
+            <tr>
+                <th>תאריך</th>
+                <th>מספר</th>
+                <th>סה"כ לתשלום</th>
+                <th>מסמך</th>
+                <th>חתימה</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="pro in pros">
+                <td class="date">{{pro.date | date: 'dd/MM/y'}}</td>
+                <td>{{pro.number}}</td>
+                <td class="amount">{{pro.totalAmount | currency: ''}}</td>
+                <td><a target="_blank" href="../img/pros/{{pro.image}}.jpg">הצג מסמך</a></td>
+                <td>{{pro.signed ? 'כן' : 'לא'}}</td>
+            </tr>
+            </tbody>
+            <tfoot>
+            <tr>
+                <th></th>
+                <th></th>
+                <th>{{sumAmount(pros) | currency : ''}}</th>
+                <th></th>
+                <th></th>
+            </tr>
+            </tfoot>
+        </table>
+
+        <table class="table table-bordered table-striped rtl connectable">
+            <thead>
+            <tr class="bg-secondary text-white">
+                <th colspan="5">חשבוניות מס</th>
+            </tr>
+            <tr>
+                <th>תאריך</th>
+                <th>מספר</th>
+                <th>סה"כ</th>
+                <th>מסמך</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="invoice in invoices">
+                <td class="date">{{invoice.date | date: 'dd/MM/y'}}</td>
+                <td>{{invoice.number}}</td>
+                <td class="amount">{{invoice.totalAmount | currency: ''}}</td>
+                <td><a target="_blank" href="../img/invoices/{{invoice.image}}.jpg">הצג מסמך</a></td>
+            </tr>
+            </tbody>
+            <tfoot>
+            <tr>
+                <th></th>
+                <th></th>
+                <th>{{sumAmount(invoices) | currency : ''}}</th>
+                <th></th>
+            </tr>
+            </tfoot>
+        </table>
+
+        <table class="table table-bordered table-striped rtl connectable">
+            <thead>
+            <tr class="bg-secondary text-white">
+                <th colspan="5">חשבוניות מס קבלה</th>
+            </tr>
+            <tr>
+                <th>תאריך</th>
+                <th>מספר</th>
+                <th>סה"כ</th>
+                <th>מסמך</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="receiptInvoice in receiptInvoices">
+                <td class="date">{{receiptInvoice.date | date: 'dd/MM/y'}}</td>
+                <td>{{receiptInvoice.number}}</td>
+                <td class="amount">{{receiptInvoice.totalAmount | currency: ''}}</td>
+                <td><a target="_blank" href="../img/receipt_invoices/{{receiptInvoice.image}}.jpg">הצג מסמך</a></td>
+            </tr>
+            </tbody>
+            <tfoot>
+            <tr>
+                <th></th>
+                <th></th>
+                <th>{{sumAmount(receiptInvoices) | currency : ''}}</th>
+                <th></th>
+            </tr>
+            </tfoot>
+        </table>
+
+        <table class="table table-bordered table-striped rtl connectable">
+            <thead>
+            <tr class="bg-secondary text-white">
+                <th colspan="5">קבלת דחויים</th>
+            </tr>
+            <tr>
+                <th>תאריך</th>
+                <th>מספר</th>
+                <th>סה"כ</th>
+                <th>מסמך</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="deffered in deffereds">
+                <td class="date">{{deffered.date | date: 'dd/MM/y'}}</td>
+                <td>{{deffered.number}}</td>
+                <td class="amount">{{deffered.totalAmount | currency: ''}}</td>
+                <td><a target="_blank" href="../img/deffereds/{{deffered.image}}.jpg">הצג מסמך</a></td>
+            </tr>
+            </tbody>
+            <tfoot>
+            <tr>
+                <th></th>
+                <th></th>
+                <th>{{sumAmount(deffereds) | currency : ''}}</th>
+                <th></th>
+            </tr>
+            </tfoot>
+        </table>
+    </div>
+</div>
