@@ -28,7 +28,7 @@ angular.module('ayelet').service('defferedService', [function() {
             ],
             totalAmount: 1200,
             image: 'deffered3'
-        },
+        }
     ];
 
     defferedService.getDeffereds = term => {

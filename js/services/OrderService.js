@@ -99,7 +99,7 @@ angular.module('ayelet').service('orderService', [function() {
             date: new Date('2017-09-12 13:47:00'),
             items: [
                 { desc: 'פרסום באנר באתר המתנות', quantity: 12, pricePerUnit: 520 },
-                { desc: 'פרסום באנר באתר המתנות', quantity: 1, pricePerUnit: 150 },
+                { desc: 'כולל עיצוב איחסון ועריכה', quantity: 1, pricePerUnit: 150 },
             ],
             totalAmount: 7476.30,
             image: 'order9',

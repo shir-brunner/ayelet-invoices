@@ -118,6 +118,24 @@ angular.module('ayelet').service('receiptInvoiceService', [function () {
             ],
             totalAmount: 2110.36,
             image: 'rec_invoice13'
+        },
+        {
+            number: '02/000861',
+            date: new Date('2018-02-04 09:20:00'),
+            items: [
+                { desc: 'עבור עמוד במגזין ינואר - ליברל', quantity: 1, pricePerUnit: 6340 },
+            ],
+            totalAmount: 7417.80,
+            image: 'rec_invoice14'
+        },
+        {
+            number: '02/000860',
+            date: new Date('2018-02-04 09:19:00'),
+            items: [
+                { desc: 'עמוד מגזין ליברל לפני החצי', quantity: 1, pricePerUnit: 7321 },
+            ],
+            totalAmount: 8565.60,
+            image: 'rec_invoice15'
         }
     ];
 

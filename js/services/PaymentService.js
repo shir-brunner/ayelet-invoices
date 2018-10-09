@@ -595,6 +595,60 @@ angular.module('ayelet').service('paymentService', [function () {
             amount: 1000.00,
             payments: 1
         },
+        {
+            voucherNumber: '0003369',
+            date: new Date('2017-09-03'),
+            amount: 6040,
+            payments: 1
+        },
+        {
+            voucherNumber: '0003368',
+            date: new Date('2017-09-03'),
+            amount: 7945,
+            payments: 1
+        },
+        {
+            voucherNumber: '0003377',
+            date: new Date('2017-09-05'),
+            amount: 8000,
+            payments: 1
+        },
+        {
+            voucherNumber: '0003378',
+            date: new Date('2017-09-05'),
+            amount: 2300,
+            payments: 1
+        },
+        {
+            voucherNumber: '0003381',
+            date: new Date('2017-09-06'),
+            amount: 2000,
+            payments: 1
+        },
+        {
+            voucherNumber: '0003421',
+            date: new Date('2017-09-24'),
+            amount: 1755,
+            payments: 1
+        },
+        {
+            voucherNumber: '0003304',
+            date: new Date('2017-08-09'),
+            amount: 9150,
+            payments: 3
+        },
+        {
+            voucherNumber: '0003306',
+            date: new Date('2017-08-10'),
+            amount: 1200,
+            payments: 1
+        },
+        {
+            voucherNumber: '0003361',
+            date: new Date('2017-08-31'),
+            amount: 2965,
+            payments: 2
+        },
     ];
 
     paymentService.getPayments = () => _.sortBy(payments, 'date');

@@ -72,7 +72,25 @@ angular.module('ayelet').service('invoiceService', [function () {
             ],
             totalAmount: 810.75,
             image: 'invoice8'
-        }
+        },
+        {
+            number: '01/003336',
+            date: new Date('2018-03-04 14:20:00'),
+            items: [
+                { desc: 'קבלת דחויים מספר 607, עבור פרסום השלמה לדאבל ספרייד', quantity: 1, pricePerUnit: 2113.33 },
+            ],
+            totalAmount: 2472.60,
+            image: 'invoice9'
+        },
+        {
+            number: '01/003289',
+            date: new Date('2018-02-04 08:40:00'),
+            items: [
+                { desc: 'קבלת דחויים מספר 607, עבור פרסום השלמה לדאבל ספרייד', quantity: 1, pricePerUnit: 2113.33 },
+            ],
+            totalAmount: 2472.60,
+            image: 'invoice10'
+        },
     ];
 
     invoiceService.getInvoices = term => {
