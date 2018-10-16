@@ -12,6 +12,7 @@
                 <th>סכום עסקה</th>
                 <th ng-hide="showTimeline">תשלומים</th>
                 <th ng-show="showTimeline">פירוט משוער לפי מחיר</th>
+                <th>טופס הכחשה</th>
             </tr>
             </thead>
             <tbody id="payments">
@@ -21,6 +22,7 @@
                 <td class="amount">{{payment.amount | currency: ''}}</td>
                 <td ng-hide="showTimeline">{{payment.payments}}</td>
                 <td ng-show="showTimeline">{{getTimelineDetails(payment)}}</td>
+                <th>{{payment.denied ? 'כן' : ''}}</th>
             </tr>
             </tbody>
             <tfoot>
@@ -30,6 +32,7 @@
                 <th>{{sumAmount(payments) | currency : ''}}</th>
                 <th ng-hide="showTimeline"></th>
                 <th ng-show="showTimeline"></th>
+                <th></th>
             </tr>
             </tfoot>
         </table>
