@@ -22,7 +22,7 @@
                 <td class="amount">{{payment.amount | currency: ''}}</td>
                 <td ng-hide="showTimeline">{{payment.payments}}</td>
                 <td ng-show="showTimeline">{{getTimelineDetails(payment)}}</td>
-                <th>{{payment.denied ? 'כן' : ''}}</th>
+                <td>{{payment.denied ? 'כן' : ''}}</td>
             </tr>
             </tbody>
             <tfoot>

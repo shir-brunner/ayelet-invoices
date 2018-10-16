@@ -2,6 +2,20 @@ angular.module('ayelet').service('paymentService', [function () {
     let paymentService = this;
     let payments = [
         {
+            voucherNumber: '0004180',
+            date: new Date('2018-10-02'),
+            amount: 8654.40,
+            payments: 1,
+            denied: true
+        },
+        {
+            voucherNumber: '0004181',
+            date: new Date('2018-10-02'),
+            amount: 1474.20,
+            payments: 1,
+            denied: true
+        },
+        {
             voucherNumber: '0004126',
             date: new Date('2018-09-02'),
             amount: 8564.40,
