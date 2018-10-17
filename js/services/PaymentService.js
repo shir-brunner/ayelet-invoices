@@ -6,14 +6,16 @@ angular.module('ayelet').service('paymentService', [function () {
             date: new Date('2018-10-02'),
             amount: 8654.40,
             payments: 1,
-            denied: true
+            denied: true,
+            card: '6339'
         },
         {
             voucherNumber: '0004181',
             date: new Date('2018-10-02'),
             amount: 1474.20,
             payments: 1,
-            denied: true
+            denied: true,
+            card: '6339'
         },
         {
             voucherNumber: '0004126',
