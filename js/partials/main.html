@@ -1,10 +1,10 @@
-<canvas id="connections" ng-show="showConnections"></canvas>
+<canvas id="connections" ng-show="showConnections && !showTimeline"></canvas>
 <div class="row">
     <div class="text-center col-sm-6">
         <table class="table table-bordered table-striped rtl">
             <thead>
             <tr class="bg-secondary text-white">
-                <th colspan="{{showTimeline ? 4 : 5}}">חיובים בכרטיס אשראי</th>
+                <th colspan="{{showTimeline ? 5 : 6}}">חיובים בכרטיס אשראי</th>
             </tr>
             <tr>
                 <th>תאריך</th>
@@ -12,6 +12,7 @@
                 <th>סכום עסקה</th>
                 <th ng-hide="showTimeline">תשלומים</th>
                 <th ng-show="showTimeline">פירוט משוער לפי מחיר</th>
+                <th>כרטיס</th>
                 <th>טופס הכחשה</th>
             </tr>
             </thead>
@@ -22,6 +23,7 @@
                 <td class="amount">{{payment.amount | currency: ''}}</td>
                 <td ng-hide="showTimeline">{{payment.payments}}</td>
                 <td ng-show="showTimeline">{{getTimelineDetails(payment)}}</td>
+                <td>{{payment.card}}</td>
                 <td>{{payment.denied ? 'כן' : ''}}</td>
             </tr>
             </tbody>
@@ -32,6 +34,7 @@
                 <th>{{sumAmount(payments) | currency : ''}}</th>
                 <th ng-hide="showTimeline"></th>
                 <th ng-show="showTimeline"></th>
+                <th></th>
                 <th></th>
             </tr>
             </tfoot>

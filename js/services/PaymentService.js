@@ -20,140 +20,160 @@ angular.module('ayelet').service('paymentService', [function () {
             date: new Date('2018-09-02'),
             amount: 8564.40,
             payments: 4,
-            denied: true
+            denied: true,
+            card: '6339'
         },
         {
             voucherNumber: '0004127',
             date: new Date('2018-09-02'),
             amount: 6320.00,
             payments: 1,
-            denied: true
+            denied: true,
+            card: '6339'
         },
         {
             voucherNumber: '0004162',
             date: new Date('2018-09-16'),
             amount: 2110.83,
             payments: 1,
-            denied: true
+            denied: true,
+            card: '6339'
         },
         {
             voucherNumber: '0004128',
             date: new Date('2018-09-02'),
             amount: 2945.00,
             payments: 1,
-            denied: true
+            denied: true,
+            card: '9831'
         },
         {
             voucherNumber: '0004131',
             date: new Date('2018-09-02'),
             amount: 3240.00,
             payments: 1,
-            denied: true
+            denied: true,
+            card: '9831'
         },
         {
             voucherNumber: '0004130',
             date: new Date('2018-09-02'),
             amount: 2149.80,
             payments: 1,
-            denied: true
+            denied: true,
+            card: '9831'
         },
         {
             voucherNumber: '0004129',
             date: new Date('2018-09-02'),
             amount: 5733.36,
             payments: 2,
-            denied: true
+            denied: true,
+            card: '9831'
         },
         {
             voucherNumber: '0004146',
             date: new Date('2018-09-05'),
             amount: 6320.00,
             payments: 6,
-            denied: true
+            denied: true,
+            card: '9831'
         },
         {
             voucherNumber: '0004170',
             date: new Date('2018-09-20'),
             amount: 1260.00,
             payments: 6,
-            denied: true
+            denied: true,
+            card: '9831'
         },
         {
             voucherNumber: '0004061',
             date: new Date('2018-08-02'),
             amount: 4434.40,
             payments: 1,
-            denied: true
+            denied: true,
+            card: '6339'
         },
         {
             voucherNumber: '0004060',
             date: new Date('2018-08-02'),
             amount: 2945.00,
             payments: 1,
-            denied: true
+            denied: true,
+            card: '6339'
         },
         {
             voucherNumber: '0004059',
             date: new Date('2018-08-02'),
             amount: 6320.00,
             payments: 1,
-            denied: true
+            denied: true,
+            card: '6339'
         },
         {
             voucherNumber: '0004058',
             date: new Date('2018-08-02'),
             amount: 8564.40,
             payments: 3,
-            denied: true
+            denied: true,
+            card: '6339'
         },
         {
             voucherNumber: '0004081',
             date: new Date('2018-08-12'),
             amount: 5733.36,
             payments: 3,
-            denied: true
+            denied: true,
+            card: '6339'
         },
         {
             voucherNumber: '0004062',
             date: new Date('2018-08-02'),
             amount: 1474.20,
             payments: 1,
-            denied: true
+            denied: true,
+            card: '9831'
         },
         {
             voucherNumber: '0004064',
             date: new Date('2018-08-02'),
             amount: 3240.00,
             payments: 1,
-            denied: true
+            denied: true,
+            card: '9831'
         },
         {
             voucherNumber: '0004063',
             date: new Date('2018-08-02'),
             amount: 2149.75,
             payments: 1,
-            denied: true
+            denied: true,
+            card: '9831'
         },
         {
             voucherNumber: '0004071',
             date: new Date('2018-08-05'),
             amount: 7417.80,
             payments: 8,
-            denied: true
+            denied: true,
+            card: '9831'
         },
         {
             voucherNumber: '0004099',
             date: new Date('2018-08-15'),
             amount: 2460.00,
             payments: 1,
-            denied: true
+            denied: true,
+            card: '9831'
         },
         {
             voucherNumber: '0004109',
             date: new Date('2018-08-21'),
             amount: 2925.00,
             payments: 1,
-            denied: true
+            denied: true,
+            card: '9831'
         },
         {
             voucherNumber: '0003990',
@@ -202,14 +222,16 @@ angular.module('ayelet').service('paymentService', [function () {
             date: new Date('2018-07-19'),
             amount: 1260.00,
             payments: 1,
-            denied: true
+            denied: true,
+            card: '9831'
         },
         {
             voucherNumber: '0004035',
             date: new Date('2018-07-22'),
             amount: 2925.00,
             payments: 1,
-            denied: true
+            denied: true,
+            card: '9831'
         },
         {
             voucherNumber: '0003931',
