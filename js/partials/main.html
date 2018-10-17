@@ -17,7 +17,8 @@
             </tr>
             </thead>
             <tbody id="payments">
-            <tr ng-repeat="payment in payments" class="payment" ng-hide="searchTerm && showTimeline && !getTimelineDetails(payment)">
+            <tr ng-repeat="payment in payments" class="payment"
+                ng-hide="searchTerm && showTimeline && !getTimelineDetails(payment)">
                 <td class="date">{{payment.date | date: 'dd/MM/y'}}</td>
                 <td ng-hide="showTimeline">{{payment.voucherNumber}}</td>
                 <td class="amount">{{payment.amount | currency: ''}}</td>
@@ -256,6 +257,48 @@
                 <th></th>
             </tr>
             </tfoot>
+        </table>
+
+        <table class="table table-bordered table-striped rtl connectable">
+            <thead>
+            <tr class="bg-secondary text-white">
+                <th colspan="5">סיכום נתונים</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>סה"כ הזמנות</td>
+                <td>{{sumAmount(orders) | currency : ''}}</td>
+            </tr>
+            <tr>
+                <td>סה"כ הזמנות וחשבונות עסקה</td>
+                <td>{{sumAmount(orders.concat(pros)) | currency : ''}}</td>
+            </tr>
+            <tr>
+                <td>סה"כ חשבוניות מס</td>
+                <td>{{sumAmount(invoices) | currency : ''}}</td>
+            </tr>
+            <tr>
+                <td>סה"כ חשבוניות מס קבלה</td>
+                <td>{{sumAmount(receiptInvoices) | currency : ''}}</td>
+            </tr>
+            <tr>
+                <td>סה"כ דחויים</td>
+                <td>{{sumAmount(deffereds) | currency : ''}}</td>
+            </tr>
+            <tr>
+                <td>סה"כ חיובים בכרטיס 6339</td>
+                <td>{{sumAmountForCard('6339') | currency : ''}}</td>
+            </tr>
+            <tr>
+                <td>סה"כ חיובים בכרטיס 9831</td>
+                <td>{{sumAmountForCard('9831') | currency : ''}}</td>
+            </tr>
+            <tr>
+                <td>סה"כ חיובים בכל הכרטיסים</td>
+                <td>{{sumAmount(payments) | currency : ''}}</td>
+            </tr>
+            </tbody>
         </table>
     </div>
 </div>

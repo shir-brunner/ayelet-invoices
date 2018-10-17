@@ -1,5 +1,6 @@
 angular.module('ayelet').controller('mainController', ['$scope', 'orderService', 'proService', 'defferedService', 'invoiceService', 'receiptInvoiceService', 'paymentService', function ($scope, orderService, proService, defferedService, invoiceService, receiptInvoiceService, paymentService) {
     $scope.sumAmount = entries => entries.reduce((acc, entry) => acc += (entry.amount || entry.totalAmount), 0);
+    $scope.sumAmountForCard = card => $scope.payments.filter(x => x.card === card).reduce((acc, entry) => acc += (entry.amount || entry.totalAmount), 0);
     $scope.search = () => {
         $scope.orders = orderService.getOrders($scope.searchTerm);
         $scope.pros = proService.getPros($scope.searchTerm);
