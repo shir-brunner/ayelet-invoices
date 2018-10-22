@@ -4,7 +4,7 @@
         <table class="table table-bordered table-striped rtl">
             <thead>
             <tr class="bg-secondary text-white">
-                <th colspan="{{showTimeline ? 5 : 6}}">חיובים בכרטיס אשראי</th>
+                <th colspan="{{showTimeline ? 6 : 7}}">חיובים בכרטיס אשראי</th>
             </tr>
             <tr>
                 <th>תאריך</th>
@@ -14,6 +14,7 @@
                 <th ng-show="showTimeline">פירוט משוער לפי מחיר</th>
                 <th>כרטיס</th>
                 <th>טופס הכחשה</th>
+                <th>בוטל</th>
             </tr>
             </thead>
             <tbody id="payments">
@@ -26,6 +27,7 @@
                 <td ng-show="showTimeline">{{getTimelineDetails(payment)}}</td>
                 <td>{{payment.card}}</td>
                 <td>{{payment.denied ? 'כן' : ''}}</td>
+                <td>{{payment.refunded ? 'בוטל' : ''}}</td>
             </tr>
             </tbody>
             <tfoot>
@@ -35,6 +37,7 @@
                 <th>{{sumAmount(payments) | currency : ''}}</th>
                 <th ng-hide="showTimeline"></th>
                 <th ng-show="showTimeline"></th>
+                <th></th>
                 <th></th>
                 <th></th>
             </tr>
@@ -60,7 +63,7 @@
         <table class="table table-bordered table-striped rtl connectable">
             <thead>
             <tr class="bg-secondary text-white">
-                <th colspan="5">מחיר לפי פריט</th>
+                <th colspan="5">מחיר לפי פריט (הכל כולל מע"מ)</th>
             </tr>
             <tr>
                 <th>פריט</th>
@@ -297,6 +300,14 @@
             <tr>
                 <td>סה"כ חיובים בכל הכרטיסים</td>
                 <td>{{sumAmount(payments) | currency : ''}}</td>
+            </tr>
+            <tr>
+                <td>סה"כ זיכויים</td>
+                <td>{{sumRefundedAmount(payments) | currency : ''}}</td>
+            </tr>
+            <tr>
+                <td>סה"כ ריבית זיכויים</td>
+                <td>{{sumRefundedInterest(payments) | currency : ''}}</td>
             </tr>
             </tbody>
         </table>

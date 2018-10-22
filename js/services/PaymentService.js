@@ -39,7 +39,9 @@ angular.module('ayelet').service('paymentService', [function () {
             amount: 2110.83,
             payments: 1,
             denied: true,
-            card: '6339'
+            card: '6339',
+            refunded: true,
+            refundInterest: 1.48
         },
         {
             voucherNumber: '0004128',
@@ -47,7 +49,9 @@ angular.module('ayelet').service('paymentService', [function () {
             amount: 2945.00,
             payments: 1,
             denied: true,
-            card: '9831'
+            card: '9831',
+            refunded: true,
+            refundInterest: 2.07
         },
         {
             voucherNumber: '0004131',
@@ -55,7 +59,9 @@ angular.module('ayelet').service('paymentService', [function () {
             amount: 3240.00,
             payments: 1,
             denied: true,
-            card: '9831'
+            card: '9831',
+            refunded: true,
+            refundInterest: 2.27
         },
         {
             voucherNumber: '0004130',
@@ -63,7 +69,9 @@ angular.module('ayelet').service('paymentService', [function () {
             amount: 2149.80,
             payments: 1,
             denied: true,
-            card: '9831'
+            card: '9831',
+            refunded: true,
+            refundInterest: 1.51
         },
         {
             voucherNumber: '0004129',
@@ -135,7 +143,9 @@ angular.module('ayelet').service('paymentService', [function () {
             amount: 1474.20,
             payments: 1,
             denied: true,
-            card: '9831'
+            card: '9831',
+            refunded: true,
+            refundInterest: 2.97
         },
         {
             voucherNumber: '0004064',
@@ -143,7 +153,9 @@ angular.module('ayelet').service('paymentService', [function () {
             amount: 3240.00,
             payments: 1,
             denied: true,
-            card: '9831'
+            card: '9831',
+            refunded: true,
+            refundInterest: 6.53
         },
         {
             voucherNumber: '0004063',
@@ -151,7 +163,9 @@ angular.module('ayelet').service('paymentService', [function () {
             amount: 2149.75,
             payments: 1,
             denied: true,
-            card: '9831'
+            card: '9831',
+            refunded: true,
+            refundInterest: 4.33
         },
         {
             voucherNumber: '0004071',
@@ -167,7 +181,9 @@ angular.module('ayelet').service('paymentService', [function () {
             amount: 2460.00,
             payments: 1,
             denied: true,
-            card: '9831'
+            card: '9831',
+            refunded: true,
+            refundInterest: 4.96
         },
         {
             voucherNumber: '0004109',
@@ -175,7 +191,9 @@ angular.module('ayelet').service('paymentService', [function () {
             amount: 2925.00,
             payments: 1,
             denied: true,
-            card: '9831'
+            card: '9831',
+            refunded: true,
+            refundInterest: 5.90
         },
         {
             voucherNumber: '0003990',
@@ -232,7 +250,9 @@ angular.module('ayelet').service('paymentService', [function () {
             amount: 1260.00,
             payments: 1,
             denied: true,
-            card: '9831'
+            card: '9831',
+            refunded: true,
+            refundInterest: 4.25
         },
         {
             voucherNumber: '0004035',
@@ -240,21 +260,27 @@ angular.module('ayelet').service('paymentService', [function () {
             amount: 2925.00,
             payments: 1,
             denied: true,
-            card: '9831'
+            card: '9831',
+            refunded: true,
+            refundInterest: 9.87
         },
         {
             voucherNumber: '0003931',
             date: new Date('2018-06-03'),
             amount: 2110.83,
             payments: 1,
-            card: '6339'
+            card: '6339',
+            refunded: true,
+            refundInterest: 9.99
         },
         {
             voucherNumber: '0003922',
             date: new Date('2018-06-03'),
             amount: 2945.00,
             payments: 1,
-            card: '6339'
+            card: '6339',
+            refunded: true,
+            refundInterest: 13.94
         },
         {
             voucherNumber: '0003921',
