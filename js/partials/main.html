@@ -262,7 +262,7 @@
             </tfoot>
         </table>
 
-        <table class="table table-bordered table-striped rtl connectable">
+        <table class="table table-bordered table-striped rtl">
             <thead>
             <tr class="bg-secondary text-white">
                 <th colspan="5">סיכום נתונים</th>
@@ -309,6 +309,24 @@
                 <td>סה"כ ריבית זיכויים</td>
                 <td>{{sumRefundedInterest(payments) | currency : ''}}</td>
             </tr>
+            </tbody>
+        </table>
+
+        <table class="table table-bordered table-striped rtl">
+            <thead>
+            <tr class="bg-secondary text-white">
+                <th colspan="5">חיובים לפי חודש</th>
+            </tr>
+            <tr>
+                <th>חודש</th>
+                <th>סכום החיוב</th>
+            </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="month in byMonth">
+                    <td>{{month.monthName}}</td>
+                    <td>{{sumAmount(month.payments) | currency: ''}}</td>
+                </tr>
             </tbody>
         </table>
     </div>

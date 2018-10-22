@@ -12,6 +12,7 @@ angular.module('ayelet').controller('mainController', ['$scope', 'orderService',
         $scope.payments = paymentService.getPayments($scope.searchTerm);
         $scope.items = getItems($scope);
 
+        $scope.byMonth = groupPaymentsByMonth($scope.payments);
         $scope.showConnections && setTimeout(() => showConnections($scope.linkType), 10);
     };
     $scope.search();
@@ -118,4 +119,17 @@ function getItems($scope) {
         $scope.invoices.map(invoice => invoice.items),
         $scope.receiptInvoices.map(receiptInvoice => receiptInvoice.items),
     ]);
+}
+
+function groupPaymentsByMonth(payments) {
+    let byMonth = {};
+    payments.forEach(payment => {
+        let paymentDate = moment(payment.date);
+        let monthName = paymentDate.format('MM/YYYY');
+        if (!byMonth[monthName])
+            byMonth[monthName] = { monthName: monthName, payments: [] };
+
+        byMonth[monthName].payments.push(payment);
+    });
+    return _.values(byMonth);
 }
