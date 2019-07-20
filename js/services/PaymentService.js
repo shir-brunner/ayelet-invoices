@@ -23,7 +23,11 @@ angular.module('ayelet').service('paymentService', [function () {
             amount: 8564.40,
             payments: 4,
             denied: true,
-            card: '6339'
+            card: '6339',
+            partialRefunds: [
+                { amount: 2141.10, interest: 0 },
+                { amount: 2141.10, interest: 0 }
+            ]
         },
         {
             voucherNumber: '0004127',
@@ -79,7 +83,10 @@ angular.module('ayelet').service('paymentService', [function () {
             amount: 5733.36,
             payments: 2,
             denied: true,
-            card: '9831'
+            card: '9831',
+            partialRefunds: [
+                { amount: 2866.68, interest: 3.77 }
+            ]
         },
         {
             voucherNumber: '0004146',
@@ -87,7 +94,10 @@ angular.module('ayelet').service('paymentService', [function () {
             amount: 6320.00,
             payments: 6,
             denied: true,
-            card: '9831'
+            card: '9831',
+            partialRefunds: [
+                { amount: 1053.35, interest: 1.06 }
+            ]
         },
         {
             voucherNumber: '0004170',
@@ -95,7 +105,9 @@ angular.module('ayelet').service('paymentService', [function () {
             amount: 1260.00,
             payments: 6,
             denied: true,
-            card: '9831'
+            card: '9831',
+            refunded: true,
+            refundInterest: 0
         },
         {
             voucherNumber: '0004061',
@@ -242,7 +254,12 @@ angular.module('ayelet').service('paymentService', [function () {
             date: new Date('2018-07-02'),
             amount: 6480.00,
             payments: 4,
-            card: '9831'
+            card: '9831',
+            partialRefunds: [
+                { amount: 1620, interest: 5.97 },
+                { amount: 1620, interest: 3.76 },
+                { amount: 1620, interest: 1.63 },
+            ]
         },
         {
             voucherNumber: '0004031',
@@ -823,6 +840,13 @@ angular.module('ayelet').service('paymentService', [function () {
         },
     ];
 
+    let unknownRefunds = [
+        { date: new Date('2018-11-14'), amount: 6320, voucherNumber: '0000004' },
+        { date: new Date('2018-11-14'), amount: 927.12, voucherNumber: '0000004' },
+        { date: new Date('2018-11-14'), amount: 2140.80, voucherNumber: '0000003' },
+    ];
+
     paymentService.getPayments = () => _.sortBy(payments, 'date');
+    paymentService.getUnknownRefunds = () => _.sortBy(unknownRefunds, 'date');
     return paymentService;
 }]);

@@ -27,7 +27,7 @@
                 <td ng-show="showTimeline">{{getTimelineDetails(payment)}}</td>
                 <td>{{payment.card}}</td>
                 <td>{{payment.denied ? 'כן' : ''}}</td>
-                <td>{{payment.refunded ? 'בוטל' : ''}}</td>
+                <td>{{payment.refunded ? 'בוטל' : payment.partialRefunds.length ? ('ביטול חלקי (' + payment.partialRefunds.length + ' מתוך ' + payment.payments + ')') : ''}}</td>
             </tr>
             </tbody>
             <tfoot>

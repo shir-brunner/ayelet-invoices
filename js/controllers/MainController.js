@@ -1,8 +1,24 @@
 angular.module('ayelet').controller('mainController', ['$scope', 'orderService', 'proService', 'defferedService', 'invoiceService', 'receiptInvoiceService', 'paymentService', function ($scope, orderService, proService, defferedService, invoiceService, receiptInvoiceService, paymentService) {
     $scope.sumAmount = entries => entries.reduce((acc, entry) => acc += (entry.amount || entry.totalAmount), 0);
     $scope.sumAmountForCard = card => $scope.payments.filter(x => x.card === card).reduce((acc, payment) => acc += payment.amount, 0);
-    $scope.sumRefundedAmount = () => $scope.payments.filter(x => x.refunded).reduce((acc, payment) => acc += payment.amount, 0);
-    $scope.sumRefundedInterest = () => $scope.payments.filter(x => x.refunded).reduce((acc, payment) => acc += payment.refundInterest, 0);
+
+    $scope.sumRefundedAmount = () => {
+        let refundedAmount = $scope.payments.filter(x => x.refunded).reduce((acc, payment) => acc += payment.amount, 0);
+        let partialRefundsAmount = $scope.payments.filter(x => x.partialRefunds).reduce((acc, payment) => {
+            return acc + payment.partialRefunds.reduce((sum, refund) => sum += refund.amount, 0);
+        }, 0);
+        let unknownRefundsAmount = $scope.unknownRefunds.reduce((acc, unknownRefund) => acc + unknownRefund.amount, 0);
+
+        return refundedAmount + partialRefundsAmount + unknownRefundsAmount;
+    };
+    $scope.sumRefundedInterest = () => {
+        let refundedInterest = $scope.payments.filter(x => x.refunded).reduce((acc, payment) => acc += payment.refundInterest, 0);
+        let partialRefundInterest = $scope.payments.filter(x => x.partialRefunds).reduce((acc, payment) => {
+            return acc + payment.partialRefunds.reduce((sum, refund) => sum += refund.interest, 0);
+        }, 0);
+        return refundedInterest + partialRefundInterest;
+    };
+
     $scope.search = () => {
         $scope.orders = orderService.getOrders($scope.searchTerm);
         $scope.pros = proService.getPros($scope.searchTerm);
@@ -11,6 +27,7 @@ angular.module('ayelet').controller('mainController', ['$scope', 'orderService',
         $scope.receiptInvoices = receiptInvoiceService.getReceiptInvoices($scope.searchTerm);
         $scope.payments = paymentService.getPayments($scope.searchTerm);
         $scope.items = getItems($scope);
+        $scope.unknownRefunds = paymentService.getUnknownRefunds();
 
         $scope.byMonth = groupPaymentsByMonth($scope.payments);
         $scope.showConnections && setTimeout(() => showConnections($scope.linkType), 10);
