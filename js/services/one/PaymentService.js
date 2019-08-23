@@ -1,4 +1,4 @@
-angular.module('ayelet').service('paymentService', [function () {
+angular.module('ayelet').service('onePaymentService', [function () {
     let paymentService = this;
     let payments = [
         {

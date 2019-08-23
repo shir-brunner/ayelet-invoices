@@ -1,4 +1,4 @@
-angular.module('ayelet').service('orderService', [function() {
+angular.module('ayelet').service('oneOrderService', [function() {
     let orderService = this;
     let orders = [
         {

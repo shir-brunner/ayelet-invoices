@@ -1,4 +1,4 @@
-angular.module('ayelet').controller('mainController', ['$scope', 'orderService', 'proService', 'defferedService', 'invoiceService', 'receiptInvoiceService', 'paymentService', function ($scope, orderService, proService, defferedService, invoiceService, receiptInvoiceService, paymentService) {
+angular.module('ayelet').controller('oneController', ['$scope', 'oneOrderService', 'oneProService', 'oneDefferedService', 'oneInvoiceService', 'oneReceiptInvoiceService', 'onePaymentService', function ($scope, oneOrderService, oneProService, oneDefferedService, oneInvoiceService, oneReceiptInvoiceService, onePaymentService) {
     $scope.sumAmount = entries => entries.reduce((acc, entry) => acc += (entry.amount || entry.totalAmount), 0);
     $scope.sumAmountForCard = card => $scope.payments.filter(x => x.card === card).reduce((acc, payment) => acc += payment.amount, 0);
 
@@ -20,14 +20,14 @@ angular.module('ayelet').controller('mainController', ['$scope', 'orderService',
     };
 
     $scope.search = () => {
-        $scope.orders = orderService.getOrders($scope.searchTerm);
-        $scope.pros = proService.getPros($scope.searchTerm);
-        $scope.deffereds = defferedService.getDeffereds($scope.searchTerm);
-        $scope.invoices = invoiceService.getInvoices($scope.searchTerm);
-        $scope.receiptInvoices = receiptInvoiceService.getReceiptInvoices($scope.searchTerm);
-        $scope.payments = paymentService.getPayments($scope.searchTerm);
+        $scope.orders = oneOrderService.getOrders($scope.searchTerm);
+        $scope.pros = oneProService.getPros($scope.searchTerm);
+        $scope.deffereds = oneDefferedService.getDeffereds($scope.searchTerm);
+        $scope.invoices = oneInvoiceService.getInvoices($scope.searchTerm);
+        $scope.receiptInvoices = oneReceiptInvoiceService.getReceiptInvoices($scope.searchTerm);
+        $scope.payments = onePaymentService.getPayments($scope.searchTerm);
         $scope.items = getItems($scope);
-        $scope.unknownRefunds = paymentService.getUnknownRefunds();
+        $scope.unknownRefunds = onePaymentService.getUnknownRefunds();
 
         $scope.byMonth = groupPaymentsByMonth($scope.payments);
         $scope.showConnections && setTimeout(() => showConnections($scope.linkType), 10);

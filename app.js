@@ -1,13 +1,18 @@
 var app = angular.module('ayelet', ['ui.router', 'ui.bootstrap', 'checklist-model', 'angular-uuid']);
 
 app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
-    $urlRouterProvider.otherwise('/main');
+    $urlRouterProvider.otherwise('/one');
 
     $stateProvider
-        .state('main', {
-            url: '/main',
+        .state('one', {
+            url: '/one',
             templateUrl: 'js/partials/main.html',
-            controller: 'mainController'
+            controller: 'oneController'
+        })
+        .state('rotenberg', {
+            url: '/rotenberg',
+            templateUrl: 'js/partials/main.html',
+            controller: 'rotenbergController'
         });
 }]);
 

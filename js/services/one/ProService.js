@@ -1,4 +1,4 @@
-angular.module('ayelet').service('proService', [function () {
+angular.module('ayelet').service('oneProService', [function () {
     let proService = this;
     let pros = [
         {

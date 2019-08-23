@@ -1,4 +1,4 @@
-angular.module('ayelet').service('receiptInvoiceService', [function () {
+angular.module('ayelet').service('oneReceiptInvoiceService', [function () {
     let receiptInvoiceService = this;
     let receiptInvoices = [
         {

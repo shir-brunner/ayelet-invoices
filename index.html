@@ -22,15 +22,24 @@
     <script src="js/vendor/angular-animate.js"></script>
     <script src="js/vendor/moment.js"></script>
     <script src="app.js"></script>
-    <script src="js/controllers/MainController.js"></script>
-    <script src="js/services/OrderService.js"></script>
-    <script src="js/services/ProService.js"></script>
-    <script src="js/services/DefferedService.js"></script>
-    <script src="js/services/InvoiceService.js"></script>
-    <script src="js/services/ReceiptInvoiceService.js"></script>
-    <script src="js/services/PaymentService.js"></script>
+    <script src="js/controllers/OneController.js"></script>
+    <script src="js/controllers/RotenbergController.js"></script>
+    <script src="js/services/one/OrderService.js"></script>
+    <script src="js/services/one/ProService.js"></script>
+    <script src="js/services/one/DefferedService.js"></script>
+    <script src="js/services/one/InvoiceService.js"></script>
+    <script src="js/services/one/ReceiptInvoiceService.js"></script>
+    <script src="js/services/one/PaymentService.js"></script>
+    <script src="js/services/rotenberg/OrderService.js"></script>
+    <script src="js/services/rotenberg/PaymentService.js"></script>
 </head>
 <body ng-app="ayelet">
+<div id="router">
+    <div class="btn btn-dark btn-lg" ui-sref-active="active">גמביר</div>
+    <div class="btn btn-dark btn-lg" ui-sref-active="active">תכלית</div>
+    <div class="btn btn-dark btn-lg" ui-sref="rotenberg" ui-sref-active="active">שוש רוטנברג</div>
+    <div class="btn btn-dark btn-lg" ui-sref="one" ui-sref-active="active">טל פרסום ומיתוג וואן</div>
+</div>
 <div ui-view ng-cloak></div>
 </body>
 </html>

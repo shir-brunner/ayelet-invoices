@@ -1,4 +1,4 @@
-angular.module('ayelet').service('defferedService', [function() {
+angular.module('ayelet').service('oneDefferedService', [function() {
     let defferedService = this;
     let deffereds = [
         {
